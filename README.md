@@ -53,3 +53,12 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
 2. Adaptive UI size
 	* Make all screens adaptable in size
 	* Read and calculate distance between face and screen
+
+
+## Prototype
+[UI Prototype](prototypes/ui-prototype.pdf)
+
+
+## Presentation
+[First Presentation](presentations/first_presentation.pdf)  
+Presentation was written [in Markdown](presentations/first_presentation.md) with [Marp](https://yhatt.github.io/marp/) using my own Template that [can be found her](https://github.com/Stousn/Marp-Slide-Templates).
