@@ -44,7 +44,8 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
   </tr>
 </table>
 
-### Steps
+
+## Steps
 1. Basic working weather app
 	* UI design and implementation
 	* API integration
