@@ -1,13 +1,13 @@
 # NaMoApps: Adaptive Weather App for iOS in Swift 4
 Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
----
+
 
 ## Problem
 * Short look on a display
 * visual impairment
 	* "without glasses"
 * Lots of small (and unimportant) information
----
+
 
 ## Idea
 * If the device is far away
@@ -18,7 +18,7 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
 	* Smaller texts ans graphics
 
 => Example implementation: Weather-App
----
+
 
 ## Results
 <table>
@@ -43,8 +43,6 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
     <td>Notifications</td>
   </tr>
 </table>
-
----
 
 ### Steps
 1. Basic working weather app
