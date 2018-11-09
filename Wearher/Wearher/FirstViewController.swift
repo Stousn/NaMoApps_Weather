@@ -63,16 +63,27 @@ struct Wind: Codable {
     let speed: Double
 }
 
+enum CacheKeys {
+    enum main:String {
+        case WEATHER_DATA
+        case WEATHER_IMAGE
+        case LAST_UPDATE
+    }
+}
 
 extension String: Error {}
 
 class FirstViewController: UIViewController {
+    
+    let DEBUG:Bool = true
 
     // TODO: Move to global position
     /** URL of weather API */
     let API_URL:String = "http://api.openweathermap.org/data/2.5/"
     
     let IMG_URL:String = "http://openweathermap.org/img/w/"
+    
+    let SHARED_PREFS = UserDefaults.standard
     
     // TODO: Move to global position
     /** API Key of weather API */
@@ -91,12 +102,104 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var weatherIcon: UIImageView!
     
+    @IBOutlet weak var lastUpdate: UILabel!
+    
+    // @IBOutlet var screenEdgePanGestureDown: UIScreenEdgePanGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         apiQuerry = "&APPID=" + API_KEY + "&units=metric"
         // Do any additional setup after loading the view, typically from a nib.
-        
+        loadCachedWeatherData()
         loadAsyncWeatherData(location: "Leoben,AT")
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(screenSwipedDown))
+        swipe.direction = .down
+        view.addGestureRecognizer(swipe)
+    }
+    
+    @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {
+        if recognizer.state == .recognized {
+            loadAsyncWeatherData(location: "Vienna,AT")
+        }
+    }
+    
+    func getTimestamp() -> String {
+        let date = Date();
+        let formatter = DateFormatter();
+        formatter.dateFormat = "d.M HH:mm";
+        // formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter.string(from: date)
+    }
+    
+    func cacheData(key:String, data:Data) {
+        if self.DEBUG {
+            print("DEBUG: Chaching data for \(key): \(data)")
+        }
+        SHARED_PREFS.setValue(data, forKey: key)
+    }
+    
+    func cacheString(key:String, str:String) {
+        SHARED_PREFS.setValue(str, forKey: key)
+    }
+    
+    func getCachedData(key:String) throws -> Data {
+        if let data = SHARED_PREFS.data(forKey: key) {
+            if self.DEBUG {
+                print("DEBUG: Load cached Data for \(key): \(data)")
+            }
+            return data
+        } else {
+            throw "Error loading Value for \(key) from cache"
+        }
+    }
+    
+    func getCachedString(key:String) throws -> String {
+        if let str = SHARED_PREFS.string(forKey: key) {
+            return str
+        } else {
+            throw "Error loading Value for \(key) from cache"
+        }
+    }
+    
+    func updateWeatherDataInView(degrees: String, conditions:String, location:String) {
+        self.degrees.text = degrees
+        self.conditions.text = conditions
+        self.weatherLocationName.text = location
+    }
+    
+    func updateWeatherIconInView(data:Data) {
+        self.weatherIcon.image = UIImage(data: data)
+    }
+    
+    func updateDateInView(date:String) {
+        self.lastUpdate.text = "Last Update: " + date
+    }
+    
+    func loadCachedWeatherData() {
+        do {
+            let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA.rawValue)
+            let welcome:Welcome = try! JSONDecoder().decode(Welcome.self, from: weather)
+            self.updateWeatherDataInView(
+                degrees: String(welcome.main.temp.rounded()) + " °C",
+                conditions: welcome.weather[0].main,
+                location: welcome.name)
+        } catch let e {
+            print("ERROR: \(e)")
+        }
+        do {
+            let image:Data = try getCachedData(key: CacheKeys.main.WEATHER_IMAGE.rawValue)
+            self.updateWeatherIconInView(data: image)
+        } catch let e {
+            print("ERROR: \(e)")
+        }
+        do {
+            let date:String = try getCachedString(key: CacheKeys.main.LAST_UPDATE.rawValue)
+            self.updateDateInView(date: date)
+        } catch let e {
+            print("ERROR: \(e)")
+        }
+        
     }
     
     func urlResolver (query:String) throws -> URL {
@@ -111,9 +214,13 @@ class FirstViewController: UIViewController {
             do {
                 let url = try URL(string: self.IMG_URL + code + ".png")
                 let data = try Data(contentsOf: url!)
-                DispatchQueue.main.async() {
-                    self.weatherIcon.image = UIImage(data: data)
+                if self.DEBUG {
+                    print("DEBUG: Load Weather Image from Network: \(data)")
                 }
+                DispatchQueue.main.async() {
+                    self.updateWeatherIconInView(data: data)
+                }
+                self.cacheData(key: CacheKeys.main.WEATHER_IMAGE.rawValue, data: data)
             } catch let e {
                 print("ERROR: \(e)")
                 return
@@ -125,16 +232,25 @@ class FirstViewController: UIViewController {
         DispatchQueue.global().async {
             do {
                 let url:URL = try self.urlResolver(query: self.WATHER_QUERY + location)
-                print("DEBUG: \(url)")
+                if self.DEBUG {
+                    print("DEBUG: \(url)")
+                }
                 let data = try Data(contentsOf: url)
-                print("DEBUG: \(data)")
+                if self.DEBUG {
+                    print("DEBUG: Load Weather Data from Network: \(data)")
+                }
                 let welcome:Welcome = try! JSONDecoder().decode(Welcome.self, from: data)
                 print(welcome.main.temp)
+                let now:String = self.getTimestamp()
                 DispatchQueue.main.async {
-                    self.degrees.text = String(welcome.main.temp.rounded()) + " °C"
-                    self.conditions.text = welcome.weather[0].main
-                    self.weatherLocationName.text = welcome.name
+                    self.updateWeatherDataInView(
+                        degrees: String(welcome.main.temp.rounded()) + " °C",
+                        conditions: welcome.weather[0].main,
+                        location: welcome.name)
+                    self.updateDateInView(date: now)
                 }
+                self.cacheData(key: CacheKeys.main.WEATHER_DATA.rawValue, data: data)
+                self.cacheString(key: CacheKeys.main.LAST_UPDATE.rawValue, str: now)
                 self.loadAsyncWeatherImage(code: welcome.weather[0].icon)
             } catch let e {
                 print("ERROR: \(e)")
@@ -144,5 +260,3 @@ class FirstViewController: UIViewController {
     }
     
 }
-
-
