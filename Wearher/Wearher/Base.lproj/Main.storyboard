@@ -27,7 +27,7 @@
                                                 <rect key="frame" x="5" y="5" width="172.5" height="276"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.058155415096606489" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="adO-Lg-5kb" secondAttribute="bottom" constant="5" id="R2e-vu-t8L"/>
                                             <constraint firstItem="adO-Lg-5kb" firstAttribute="top" secondItem="o6e-54-4qu" secondAttribute="top" constant="5" id="aaj-wW-A2p"/>
@@ -45,7 +45,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.14112419349999999" green="0.19668385190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="jCB-PO-zr4" secondAttribute="bottom" constant="5" id="GTh-1c-7sh"/>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.02732834751" green="1" blue="0.0014138489790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="17I-Nn-QuB" firstAttribute="leading" secondItem="vrU-pP-EVl" secondAttribute="centerX" id="3tI-xR-ydO"/>
                                     <constraint firstItem="o6e-54-4qu" firstAttribute="top" secondItem="vrU-pP-EVl" secondAttribute="top" id="8oL-0N-6CW"/>
@@ -79,16 +79,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-HZ-PQD">
+                                <rect key="frame" x="10" y="401" width="355" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="qc4-Aq-w18" secondAttribute="trailing" constant="10" id="Da2-uV-uZ0"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="Bte-HZ-PQD" secondAttribute="trailing" constant="10" id="KqR-oa-eWH"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="centerY" secondItem="vrU-pP-EVl" secondAttribute="baseline" id="Lw7-02-sAR"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="TEG-nw-2YA" secondAttribute="trailing" constant="10" id="Rnh-37-oLj"/>
+                            <constraint firstItem="Bte-HZ-PQD" firstAttribute="top" secondItem="qc4-Aq-w18" secondAttribute="bottom" constant="10" id="VZR-9b-YrZ"/>
                             <constraint firstItem="vrU-pP-EVl" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="10" id="XQg-tk-iLw"/>
                             <constraint firstItem="TEG-nw-2YA" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="10" id="Yie-ja-qiU"/>
                             <constraint firstItem="qc4-Aq-w18" firstAttribute="top" secondItem="TEG-nw-2YA" secondAttribute="bottom" constant="10" id="ajD-zO-448"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="vrU-pP-EVl" secondAttribute="trailing" constant="10" id="ch8-4g-uhv"/>
+                            <constraint firstItem="Bte-HZ-PQD" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="10" id="d0p-oR-14s"/>
                             <constraint firstItem="vrU-pP-EVl" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="13" id="nRI-wp-Auq"/>
                             <constraint firstItem="qc4-Aq-w18" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="10" id="qG8-6T-wFD"/>
                             <constraint firstItem="TEG-nw-2YA" firstAttribute="top" secondItem="vrU-pP-EVl" secondAttribute="bottom" constant="10" id="vjR-DQ-8Mb"/>
@@ -99,6 +109,7 @@
                     <connections>
                         <outlet property="conditions" destination="qc4-Aq-w18" id="Jgk-36-lZX"/>
                         <outlet property="degrees" destination="jCB-PO-zr4" id="Evs-HL-NeC"/>
+                        <outlet property="lastUpdate" destination="Bte-HZ-PQD" id="hec-gg-toM"/>
                         <outlet property="weatherIcon" destination="adO-Lg-5kb" id="AN1-4Y-4XO"/>
                         <outlet property="weatherLocationName" destination="TEG-nw-2YA" id="zSF-6S-3cQ"/>
                     </connections>
