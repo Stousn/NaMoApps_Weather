@@ -10,6 +10,7 @@ import Foundation
 
 extension String: Error {}
 
+/** Errors from Weather App*/
 enum WeatherError: Error {
     case emptyCache(message:String)
     case urlResolver(message:String)

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Singelton of class `WeatherService`*/
 let weatherService = WeatherService()
 
 class WeatherService {

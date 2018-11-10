@@ -8,7 +8,9 @@
 
 import Foundation
 
+/** Keys for in `UserDefaults.standard` cached API responses */
 enum CacheKeys {
+    /** Keys for in `UserDefaults.standard` cached API responses for `MainViewController` */
     enum main:String {
         case WEATHER_DATA
         case WEATHER_IMAGE

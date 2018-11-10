@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Singelton of class `CacheService`*/
 let cacheService = CacheService()
 
 class CacheService {
