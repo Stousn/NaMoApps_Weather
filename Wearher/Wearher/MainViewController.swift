@@ -14,66 +14,9 @@ import UIKit
 
 import Foundation
 
-struct Welcome: Codable {
-    let coord: Coord
-    let weather: [Weather]
-    let base: String
-    let main: Main
-    let wind: Wind
-    let clouds: Clouds
-    let dt: Int
-    let sys: Sys
-    let id: Int
-    let name: String
-    let cod: Int
-}
-
-struct Clouds: Codable {
-    let all: Int
-}
-
-struct Coord: Codable {
-    let lon, lat: Double
-}
-
-struct Main: Codable {
-    let temp: Double
-    let pressure, humidity, tempMin, tempMax: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case temp, pressure, humidity
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-    }
-}
-
-struct Sys: Codable {
-    let type, id: Int
-    let message: Double
-    let country: String
-    let sunrise, sunset: Int
-}
-
-struct Weather: Codable {
-    let id: Int
-    let main, description, icon: String
-}
-
-struct Wind: Codable {
-    let speed: Double
-}
-
-enum CacheKeys {
-    enum main:String {
-        case WEATHER_DATA
-        case WEATHER_IMAGE
-        case LAST_UPDATE
-    }
-}
-
 extension String: Error {}
 
-class FirstViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let DEBUG:Bool = true
 
@@ -179,7 +122,7 @@ class FirstViewController: UIViewController {
     func loadCachedWeatherData() {
         do {
             let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA.rawValue)
-            let welcome:Welcome = try! JSONDecoder().decode(Welcome.self, from: weather)
+            let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
             self.updateWeatherDataInView(
                 degrees: String(welcome.main.temp.rounded()) + " °C",
                 conditions: welcome.weather[0].main,
@@ -239,7 +182,7 @@ class FirstViewController: UIViewController {
                 if self.DEBUG {
                     print("DEBUG: Load Weather Data from Network: \(data)")
                 }
-                let welcome:Welcome = try! JSONDecoder().decode(Welcome.self, from: data)
+                let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: data)
                 print(welcome.main.temp)
                 let now:String = self.getTimestamp()
                 DispatchQueue.main.async {

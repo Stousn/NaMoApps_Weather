@@ -7,19 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2D2196C7140022608F /* ApiModel.swift */; };
+		F83ACA302196C7660022608F /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2F2196C7660022608F /* Clouds.swift */; };
+		F83ACA322196C7890022608F /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA312196C7890022608F /* Coord.swift */; };
+		F83ACA342196C7C40022608F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA332196C7C40022608F /* Main.swift */; };
+		F83ACA362196C7F20022608F /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA352196C7F20022608F /* Sys.swift */; };
+		F83ACA382196C8050022608F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA372196C8050022608F /* Weather.swift */; };
+		F83ACA3A2196C8210022608F /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA392196C8210022608F /* Wind.swift */; };
+		F83ACA3C2196C8460022608F /* CacheKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA3B2196C8460022608F /* CacheKeys.swift */; };
 		F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F93E219306630014BA7B /* AppDelegate.swift */; };
-		F8D6F941219306630014BA7B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F940219306630014BA7B /* FirstViewController.swift */; };
-		F8D6F943219306630014BA7B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F942219306630014BA7B /* SecondViewController.swift */; };
+		F8D6F941219306630014BA7B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F940219306630014BA7B /* MainViewController.swift */; };
+		F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F942219306630014BA7B /* SearchLocationViewController.swift */; };
 		F8D6F946219306630014BA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8D6F944219306630014BA7B /* Main.storyboard */; };
 		F8D6F948219306640014BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8D6F947219306640014BA7B /* Assets.xcassets */; };
 		F8D6F94B219306640014BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8D6F949219306640014BA7B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F83ACA2D2196C7140022608F /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		F83ACA2F2196C7660022608F /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
+		F83ACA312196C7890022608F /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
+		F83ACA332196C7C40022608F /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		F83ACA352196C7F20022608F /* Sys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
+		F83ACA372196C8050022608F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		F83ACA392196C8210022608F /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
+		F83ACA3B2196C8460022608F /* CacheKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKeys.swift; sourceTree = "<group>"; };
 		F8D6F93B219306630014BA7B /* Wearher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wearher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D6F93E219306630014BA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8D6F940219306630014BA7B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F8D6F942219306630014BA7B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F8D6F940219306630014BA7B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F8D6F942219306630014BA7B /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		F8D6F945219306630014BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8D6F947219306640014BA7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8D6F94A219306640014BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +53,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F83ACA3D2196C8920022608F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F83ACA372196C8050022608F /* Weather.swift */,
+				F83ACA312196C7890022608F /* Coord.swift */,
+				F83ACA2F2196C7660022608F /* Clouds.swift */,
+				F83ACA2D2196C7140022608F /* ApiModel.swift */,
+				F83ACA332196C7C40022608F /* Main.swift */,
+				F83ACA352196C7F20022608F /* Sys.swift */,
+				F83ACA392196C8210022608F /* Wind.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F83ACA3E2196C8AE0022608F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				F83ACA3B2196C8460022608F /* CacheKeys.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		F8D6F932219306620014BA7B = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +94,11 @@
 		F8D6F93D219306630014BA7B /* Wearher */ = {
 			isa = PBXGroup;
 			children = (
+				F83ACA3E2196C8AE0022608F /* Enums */,
+				F83ACA3D2196C8920022608F /* Model */,
 				F8D6F93E219306630014BA7B /* AppDelegate.swift */,
-				F8D6F940219306630014BA7B /* FirstViewController.swift */,
-				F8D6F942219306630014BA7B /* SecondViewController.swift */,
+				F8D6F940219306630014BA7B /* MainViewController.swift */,
+				F8D6F942219306630014BA7B /* SearchLocationViewController.swift */,
 				F8D6F944219306630014BA7B /* Main.storyboard */,
 				F8D6F947219306640014BA7B /* Assets.xcassets */,
 				F8D6F949219306640014BA7B /* LaunchScreen.storyboard */,
@@ -138,9 +178,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8D6F943219306630014BA7B /* SecondViewController.swift in Sources */,
+				F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */,
+				F83ACA362196C7F20022608F /* Sys.swift in Sources */,
+				F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */,
 				F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */,
-				F8D6F941219306630014BA7B /* FirstViewController.swift in Sources */,
+				F83ACA382196C8050022608F /* Weather.swift in Sources */,
+				F83ACA3A2196C8210022608F /* Wind.swift in Sources */,
+				F83ACA342196C7C40022608F /* Main.swift in Sources */,
+				F83ACA3C2196C8460022608F /* CacheKeys.swift in Sources */,
+				F83ACA322196C7890022608F /* Coord.swift in Sources */,
+				F8D6F941219306630014BA7B /* MainViewController.swift in Sources */,
+				F83ACA302196C7660022608F /* Clouds.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
