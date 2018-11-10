@@ -12,7 +12,6 @@ import Foundation
 class MainViewController: UIViewController {
     
     let SHARED_PREFS = UserDefaults.standard
-
     
     let WATHER_QUERY:String = "weather?q="
 
@@ -49,13 +48,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func getTimestamp() -> String {
-        let date = Date();
-        let formatter = DateFormatter();
-        formatter.dateFormat = "d.M HH:mm";
-        // formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter.string(from: date)
-    }
+
     
     func cacheData(key:String, data:Data) {
         if configsService.getDebug() {
@@ -156,27 +149,15 @@ class MainViewController: UIViewController {
     func loadAsyncWeatherData(location:String) {
         DispatchQueue.global().async {
             do {
-                let url:URL = try self.urlResolver(query: self.WATHER_QUERY + location)
-                if configsService.getDebug() {
-                    print("DEBUG: \(url)")
-                }
-                let data = try Data(contentsOf: url)
-                if configsService.getDebug() {
-                    print("DEBUG: Load Weather Data from Network: \(data)")
-                }
-                let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: data)
-                print(welcome.main.temp)
-                let now:String = self.getTimestamp()
+                let weatherData = try weatherService.loadWeatherDataFromSearch(search: location)
                 DispatchQueue.main.async {
                     self.updateWeatherDataInView(
-                        degrees: String(welcome.main.temp.rounded()) + " °C",
-                        conditions: welcome.weather[0].main,
-                        location: welcome.name)
-                    self.updateDateInView(date: now)
+                        degrees: String(weatherData.main.temp.rounded()) + " °C",
+                        conditions: weatherData.weather[0].main,
+                        location: weatherData.name)
+                    self.updateDateInView(date: getTimestamp())
                 }
-                self.cacheData(key: CacheKeys.main.WEATHER_DATA.rawValue, data: data)
-                self.cacheString(key: CacheKeys.main.LAST_UPDATE.rawValue, str: now)
-                self.loadAsyncWeatherImage(code: welcome.weather[0].icon)
+                self.loadAsyncWeatherImage(code: weatherData.weather[0].icon)
             } catch let e {
                 print("ERROR: \(e)")
                 return
