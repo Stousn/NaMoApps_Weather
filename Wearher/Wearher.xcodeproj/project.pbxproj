@@ -15,6 +15,10 @@
 		F83ACA382196C8050022608F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA372196C8050022608F /* Weather.swift */; };
 		F83ACA3A2196C8210022608F /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA392196C8210022608F /* Wind.swift */; };
 		F83ACA3C2196C8460022608F /* CacheKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA3B2196C8460022608F /* CacheKeys.swift */; };
+		F83ACA412196CAA30022608F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA402196CAA30022608F /* Error.swift */; };
+		F83ACA452196CD4B0022608F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83ACA442196CD4B0022608F /* Config.plist */; };
+		F83ACA482196CF390022608F /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA472196CF390022608F /* ConfigService.swift */; };
+		F83ACA4A2196D4F20022608F /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA492196D4F20022608F /* ConfigKeys.swift */; };
 		F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F93E219306630014BA7B /* AppDelegate.swift */; };
 		F8D6F941219306630014BA7B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F940219306630014BA7B /* MainViewController.swift */; };
 		F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F942219306630014BA7B /* SearchLocationViewController.swift */; };
@@ -32,6 +36,10 @@
 		F83ACA372196C8050022608F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		F83ACA392196C8210022608F /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		F83ACA3B2196C8460022608F /* CacheKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKeys.swift; sourceTree = "<group>"; };
+		F83ACA402196CAA30022608F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		F83ACA442196CD4B0022608F /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		F83ACA472196CF390022608F /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
+		F83ACA492196D4F20022608F /* ConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigKeys.swift; sourceTree = "<group>"; };
 		F8D6F93B219306630014BA7B /* Wearher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wearher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D6F93E219306630014BA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8D6F940219306630014BA7B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -67,12 +75,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F83ACA3E2196C8AE0022608F /* Enums */ = {
+		F83ACA3E2196C8AE0022608F /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				F83ACA3B2196C8460022608F /* CacheKeys.swift */,
+				F83ACA492196D4F20022608F /* ConfigKeys.swift */,
 			);
-			path = Enums;
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		F83ACA3F2196CA890022608F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F83ACA402196CAA30022608F /* Error.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		F83ACA462196CF200022608F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F83ACA472196CF390022608F /* ConfigService.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		F8D6F932219306620014BA7B = {
@@ -94,7 +119,9 @@
 		F8D6F93D219306630014BA7B /* Wearher */ = {
 			isa = PBXGroup;
 			children = (
-				F83ACA3E2196C8AE0022608F /* Enums */,
+				F83ACA462196CF200022608F /* Config */,
+				F83ACA3F2196CA890022608F /* Error */,
+				F83ACA3E2196C8AE0022608F /* Enum */,
 				F83ACA3D2196C8920022608F /* Model */,
 				F8D6F93E219306630014BA7B /* AppDelegate.swift */,
 				F8D6F940219306630014BA7B /* MainViewController.swift */,
@@ -103,6 +130,7 @@
 				F8D6F947219306640014BA7B /* Assets.xcassets */,
 				F8D6F949219306640014BA7B /* LaunchScreen.storyboard */,
 				F8D6F94C219306640014BA7B /* Info.plist */,
+				F83ACA442196CD4B0022608F /* Config.plist */,
 			);
 			path = Wearher;
 			sourceTree = "<group>";
@@ -165,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83ACA452196CD4B0022608F /* Config.plist in Resources */,
 				F8D6F94B219306640014BA7B /* LaunchScreen.storyboard in Resources */,
 				F8D6F948219306640014BA7B /* Assets.xcassets in Resources */,
 				F8D6F946219306630014BA7B /* Main.storyboard in Resources */,
@@ -181,7 +210,10 @@
 				F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */,
 				F83ACA362196C7F20022608F /* Sys.swift in Sources */,
 				F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */,
+				F83ACA4A2196D4F20022608F /* ConfigKeys.swift in Sources */,
+				F83ACA482196CF390022608F /* ConfigService.swift in Sources */,
 				F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */,
+				F83ACA412196CAA30022608F /* Error.swift in Sources */,
 				F83ACA382196C8050022608F /* Weather.swift in Sources */,
 				F83ACA3A2196C8210022608F /* Wind.swift in Sources */,
 				F83ACA342196C7C40022608F /* Main.swift in Sources */,
