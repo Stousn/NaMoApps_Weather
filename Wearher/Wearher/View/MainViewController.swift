@@ -40,6 +40,8 @@ class MainViewController: UIViewController {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(screenSwipedDown))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
+        
+        locationService.getCurrentLocation()
     }
     
     @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {

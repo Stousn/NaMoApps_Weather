@@ -24,6 +24,7 @@
 		F83ACA522196DF180022608F /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA512196DF180022608F /* CacheService.swift */; };
 		F83ACA542196E66D0022608F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA532196E66D0022608F /* LocationService.swift */; };
 		F83ACA562196EF6B0022608F /* WeatherServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA552196EF6B0022608F /* WeatherServiceHelper.swift */; };
+		F873564521A884DF00ED7AC4 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F873564421A884DF00ED7AC4 /* LocationError.swift */; };
 		F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F93E219306630014BA7B /* AppDelegate.swift */; };
 		F8D6F941219306630014BA7B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F940219306630014BA7B /* MainViewController.swift */; };
 		F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6F942219306630014BA7B /* SearchLocationViewController.swift */; };
@@ -50,6 +51,7 @@
 		F83ACA512196DF180022608F /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		F83ACA532196E66D0022608F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		F83ACA552196EF6B0022608F /* WeatherServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceHelper.swift; sourceTree = "<group>"; };
+		F873564421A884DF00ED7AC4 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		F8D6F93B219306630014BA7B /* Wearher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wearher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D6F93E219306630014BA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8D6F940219306630014BA7B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		F83ACA3F2196CA890022608F /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				F873564421A884DF00ED7AC4 /* LocationError.swift */,
 				F83ACA402196CAA30022608F /* WeatherError.swift */,
 			);
 			path = Error;
@@ -245,6 +248,7 @@
 				F83ACA482196CF390022608F /* ConfigService.swift in Sources */,
 				F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */,
 				F83ACA502196DE830022608F /* WeatherService.swift in Sources */,
+				F873564521A884DF00ED7AC4 /* LocationError.swift in Sources */,
 				F83ACA412196CAA30022608F /* WeatherError.swift in Sources */,
 				F83ACA382196C8050022608F /* Weather.swift in Sources */,
 				F83ACA4E2196DA8C0022608F /* SettingsViewController.swift in Sources */,
