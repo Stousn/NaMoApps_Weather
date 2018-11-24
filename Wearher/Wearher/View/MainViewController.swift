@@ -32,6 +32,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.clear
+        let backgroundLayer = colorService.gl
+        backgroundLayer.frame = view.frame
+        self.view.layer.insertSublayer(backgroundLayer, at: 0)
+        
         apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
         // Do any additional setup after loading the view, typically from a nib.
         loadCachedWeatherData()
@@ -83,17 +89,36 @@ class MainViewController: UIViewController {
     }
     
     func updateWeatherDataInView(degrees: String, conditions:String, location:String) {
+        // fade out
+        self.fadeViewOut(view: self.degrees, animationDuration: 0.25)
+        self.fadeViewOut(view: self.conditions, animationDuration: 0.25)
+        self.fadeViewOut(view: self.weatherLocationName, animationDuration: 0.25)
+        // fade out image too so it looks more syncrounus
+        self.fadeViewOut(view: self.weatherIcon, animationDuration: 0.25)
+        self.fadeViewOut(view: self.lastUpdate, animationDuration: 0.25)
+        
+        // set values
         self.degrees.text = degrees
         self.conditions.text = conditions
         self.weatherLocationName.text = location
+        
+        // fade in
+        self.fadeViewIn(view: self.degrees, animationDuration: 1.0)
+        self.fadeViewIn(view: self.conditions, animationDuration: 1.0)
+        self.fadeViewIn(view: self.weatherLocationName, animationDuration: 1.0)
     }
     
     func updateWeatherIconInView(data:Data) {
+        // update image
         self.weatherIcon.image = UIImage(data: data)
+        
+        // fade in
+        self.fadeViewIn(view: self.weatherIcon, animationDuration: 1.0)
     }
     
     func updateDateInView(date:String) {
         self.lastUpdate.text = "Last Update: " + date
+        self.fadeViewIn(view: self.lastUpdate, animationDuration: 1.0)
     }
     
     func loadCachedWeatherData() {
@@ -165,6 +190,21 @@ class MainViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    func fadeViewIn(view : UIView, animationDuration: Double) {
+        // Fade in the view
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+            view.alpha = 1
+        })
+    }
+    
+    func fadeViewOut(view : UIView, animationDuration: Double) {
+        // Fade out the view
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+            view.alpha = 0
+        })
+        
     }
     
 }
