@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Foundation
 
-class SecondViewController: UIViewController {
+class SearchLocationViewController: SwipableTabViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    
 }
 

@@ -68,5 +68,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Um das Wetter für Ihren Standort anzeigen zu können, wird GPS Zugriff benötigt</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Um das Wetter für Ihren Standort anzeigen zu können, wird GPS Zugriff benötigt</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 </dict>
 </plist>
