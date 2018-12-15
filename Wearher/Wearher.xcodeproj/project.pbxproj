@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F817B79421C540E100843168 /* SwipableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F817B79321C540E100843168 /* SwipableTabViewController.swift */; };
 		F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2D2196C7140022608F /* ApiModel.swift */; };
 		F83ACA302196C7660022608F /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2F2196C7660022608F /* Clouds.swift */; };
 		F83ACA322196C7890022608F /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA312196C7890022608F /* Coord.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F817B79321C540E100843168 /* SwipableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableTabViewController.swift; sourceTree = "<group>"; };
 		F83ACA2D2196C7140022608F /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		F83ACA2F2196C7660022608F /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		F83ACA312196C7890022608F /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				F8D6F940219306630014BA7B /* MainViewController.swift */,
 				F8D6F942219306630014BA7B /* SearchLocationViewController.swift */,
 				F83ACA4D2196DA8C0022608F /* SettingsViewController.swift */,
+				F817B79321C540E100843168 /* SwipableTabViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				F83ACA382196C8050022608F /* Weather.swift in Sources */,
 				F83ACA4E2196DA8C0022608F /* SettingsViewController.swift in Sources */,
 				F83ACA3A2196C8210022608F /* Wind.swift in Sources */,
+				F817B79421C540E100843168 /* SwipableTabViewController.swift in Sources */,
 				F83ACA342196C7C40022608F /* Main.swift in Sources */,
 				F83ACA3C2196C8460022608F /* CacheKeys.swift in Sources */,
 				F83ACA322196C7890022608F /* Coord.swift in Sources */,

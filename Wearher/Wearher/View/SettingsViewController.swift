@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: SwipableTabViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

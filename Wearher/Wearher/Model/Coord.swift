@@ -10,4 +10,6 @@ import Foundation
 
 struct Coord: Codable {
     let lon, lat: Double
+    
+    public var description: String { return "Coord[lat: \(lat), lon: \(lon)]" }
 }

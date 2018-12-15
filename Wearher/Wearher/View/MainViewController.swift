@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class MainViewController: UIViewController {
+class MainViewController: SwipableTabViewController {
     
     let SHARED_PREFS = UserDefaults.standard
     

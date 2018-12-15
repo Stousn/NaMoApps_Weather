@@ -64,9 +64,9 @@ class WeatherService {
     }
     
     private func urlResolver (query:String) throws -> URL {
-        guard apiQuerry == nil else {
-            return URL(string: configsService.getApiBaseUrl() +  query + apiQuerry!)!
+        if apiQuerry == nil {
+            throw WeatherError.urlResolver(message: "apiQuerry was nil")
         }
-        throw WeatherError.urlResolver(message: "apiQuerry was nil")
+        return URL(string: configsService.getApiBaseUrl() +  query + apiQuerry!)!
     }
 }
