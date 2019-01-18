@@ -10,4 +10,8 @@ import Foundation
 
 struct Wind: Codable {
     let speed: Double
+    
+    var description: String {
+        return "wind speed: \(speed);"
+    }
 }

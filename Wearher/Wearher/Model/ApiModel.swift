@@ -20,4 +20,8 @@ struct ApiModel: Codable {
     let id: Int
     let name: String
     let cod: Int
+    
+    var description: String {
+        return "The current weather at \(name): \(main), \(wind)."
+    }
 }
