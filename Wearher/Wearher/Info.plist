@@ -74,5 +74,16 @@
 	<string>Um das Wetter für Ihren Standort anzeigen zu können, wird GPS Zugriff benötigt</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+		 	<key>CFBundleURLName</key>
+			<string>at.fhj.weather</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+					<string>weather</string>
+				</array>
+		</dict>
+	</array>
 </dict>
 </plist>
