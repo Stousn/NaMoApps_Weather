@@ -17,4 +17,8 @@ struct Main: Codable {
         case tempMin = "temp_min"
         case tempMax = "temp_max"
     }
+    
+    var description: String {
+        return "Temperature: \(temp) degrees;"
+    }
 }

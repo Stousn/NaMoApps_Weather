@@ -40,7 +40,7 @@ class MainViewController: SwipableTabViewController {
         
         apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
         // Do any additional setup after loading the view, typically from a nib.
-        loadCachedWeatherData()
+        loadCachedWeatherDataAndUpdateView()
         loadAsyncWeatherData(location: "Leoben,AT")
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(screenSwipedDown))
@@ -54,6 +54,33 @@ class MainViewController: SwipableTabViewController {
         if recognizer.state == .recognized {
             loadAsyncWeatherData(location: "Vienna,AT")
         }
+    }
+    
+    @IBAction func shareWeather(_ sender: Any) {
+        
+        print("SCHÄARING")
+        
+        
+        var shareMyNote = "";
+        let weather:ApiModel
+        do {
+            weather = try loadCachedWeatherData()
+        } catch let e {
+            print("ERROR: \(e)")
+            return
+        }
+        
+            shareMyNote =
+                "Weather at " + weather.name + ", " +
+                "Temperature " + String(weather.main.temp.rounded()) + " °C, " +
+                "Conditions " + weather.weather[0].main
+        
+        let activityViewController = UIActivityViewController(
+            activityItems : [shareMyNote],
+            applicationActivities: nil
+        )
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated : true, completion : nil )
     }
     
 
@@ -121,14 +148,13 @@ class MainViewController: SwipableTabViewController {
         self.fadeViewIn(view: self.lastUpdate, animationDuration: 1.0)
     }
     
-    func loadCachedWeatherData() {
+    func loadCachedWeatherDataAndUpdateView() {
         do {
-            let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA.rawValue)
-            let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
+            let weatherDataFromCache:ApiModel = try loadCachedWeatherData()
             self.updateWeatherDataInView(
-                degrees: String(welcome.main.temp.rounded()) + " °C",
-                conditions: welcome.weather[0].main,
-                location: welcome.name)
+                degrees: String(weatherDataFromCache.main.temp.rounded()) + " °C",
+                conditions: weatherDataFromCache.weather[0].main,
+                location: weatherDataFromCache.name)
         } catch let e {
             print("ERROR: \(e)")
         }
@@ -145,6 +171,17 @@ class MainViewController: SwipableTabViewController {
             print("ERROR: \(e)")
         }
         
+    }
+    
+    func loadCachedWeatherData() throws -> ApiModel {
+        do {
+            let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA.rawValue)
+            let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
+            return welcome
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
     }
     
     func urlResolver (query:String) throws -> URL {
