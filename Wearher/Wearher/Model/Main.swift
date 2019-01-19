@@ -9,8 +9,8 @@
 import Foundation
 
 struct Main: Codable {
-    let temp: Double
-    let pressure, humidity, tempMin, tempMax: Int
+    let temp, tempMin, tempMax, pressure, humidity: Double
+
     
     enum CodingKeys: String, CodingKey {
         case temp, pressure, humidity

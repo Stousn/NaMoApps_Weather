@@ -13,7 +13,9 @@ let weatherService = WeatherService()
 
 class WeatherService {
     
-    private let WATHER_QUERY:String = "weather?q="
+    private let WATHER_SEARCH_QUERY:String = "weather?q="
+    
+     private let WATHER_LOCATION_QUERY:String = "weather?"
     
     private let apiQuerry:String?
     
@@ -21,13 +23,27 @@ class WeatherService {
         self.apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
     }
     
-    func loadWeatherDataFromLocation() {
-        // TODO: Implement
+    func loadWeatherDataFromLocation() throws -> ApiModel {
+        guard nil != locationService.locationQuery  else {
+            throw WeatherError.apiCall(message: "Error during loadWeatherDataFromLocation:")
+        }
+        do {
+            let url:URL = try self.urlResolver(query: self.WATHER_LOCATION_QUERY + locationService.locationQuery!)
+            if configsService.getDebug() {
+                print("DEBUG: \(url)")
+            }
+            return try self.callWeatherApiAndCacheResult(url: url, cacheKey: CacheKeys.main.WEATHER_DATA.rawValue, cacheUpdateKey: CacheKeys.main.LAST_UPDATE.rawValue)
+            
+        } catch let e {
+            print("ERROR: \(e)")
+            throw WeatherError.apiCall(message: "Error during calling weather api: \(e)")
+        }
+        
     }
     
     func loadWeatherDataFromSearch(search:String) throws -> ApiModel {
         do {
-            let url:URL = try self.urlResolver(query: self.WATHER_QUERY + search)
+            let url:URL = try self.urlResolver(query: self.WATHER_SEARCH_QUERY + search)
             if configsService.getDebug() {
                 print("DEBUG: \(url)")
             }

@@ -52,6 +52,7 @@ class MainViewController: SwipableTabViewController {
     
     @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .recognized {
+            locationService.getCurrentLocation()
             loadAsyncWeatherData(location: "Vienna,AT")
         }
     }
@@ -213,7 +214,8 @@ class MainViewController: SwipableTabViewController {
     func loadAsyncWeatherData(location:String) {
         DispatchQueue.global().async {
             do {
-                let weatherData = try weatherService.loadWeatherDataFromSearch(search: location)
+                //let weatherData = try weatherService.loadWeatherDataFromSearch(search: location)
+                let weatherData = try weatherService.loadWeatherDataFromLocation()
                 DispatchQueue.main.async {
                     self.updateWeatherDataInView(
                         degrees: String(weatherData.main.temp.rounded()) + " °C",
