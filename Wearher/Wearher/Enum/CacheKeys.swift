@@ -12,8 +12,12 @@ import Foundation
 enum CacheKeys {
     /** Keys for in `UserDefaults.standard` cached API responses for `MainViewController` */
     enum main:String {
-        case WEATHER_DATA
-        case WEATHER_IMAGE
-        case LAST_UPDATE
+        case WEATHER_DATA_LOCATION
+        case WEATHER_IMAGE_LOCATION
+        case LAST_UPDATE_LOCATION
+        case WEATHER_DATA_SEARCH
+        case WEATHER_IMAGE_SEARCH
+        case LAST_UPDATE_SEARCH
+        
     }
 }

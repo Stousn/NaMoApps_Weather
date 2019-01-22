@@ -41,31 +41,31 @@ class MainViewController: SwipableTabViewController {
         apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
         // Do any additional setup after loading the view, typically from a nib.
         loadCachedWeatherDataAndUpdateView()
-        loadAsyncWeatherData(location: "Leoben,AT")
+        //loadAsyncWeatherData(location: "Leoben,AT")
+        
+        locationService.getCurrentLocation()
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(screenSwipedDown))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
         
-        locationService.getCurrentLocation()
+        loadAsyncWeatherData()
+        
     }
     
     @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .recognized {
             locationService.getCurrentLocation()
-            loadAsyncWeatherData(location: "Vienna,AT")
+            loadAsyncWeatherData()
         }
     }
     
     @IBAction func shareWeather(_ sender: Any) {
-        
-        print("SCHÄARING")
-        
-        
         var shareMyNote = "";
         let weather:ApiModel
         do {
-            weather = try loadCachedWeatherData()
+            //weather = try loadCachedWeatherData()
+            weather = try weatherService.loadCachedWeatherDataFromLocation()
         } catch let e {
             print("ERROR: \(e)")
             return
@@ -97,6 +97,8 @@ class MainViewController: SwipableTabViewController {
         SHARED_PREFS.setValue(str, forKey: key)
     }
     
+    
+    @available(*, deprecated, message: "use CacheService instead")
     func getCachedData(key:String) throws -> Data {
         if let data = SHARED_PREFS.data(forKey: key) {
             if configsService.getDebug() {
@@ -118,12 +120,12 @@ class MainViewController: SwipableTabViewController {
     
     func updateWeatherDataInView(degrees: String, conditions:String, location:String) {
         // fade out
-        self.fadeViewOut(view: self.degrees, animationDuration: 0.25)
-        self.fadeViewOut(view: self.conditions, animationDuration: 0.25)
-        self.fadeViewOut(view: self.weatherLocationName, animationDuration: 0.25)
+        animationService.fadeViewOut(view: self.degrees, animationDuration: 0.25)
+        animationService.fadeViewOut(view: self.conditions, animationDuration: 0.25)
+        animationService.fadeViewOut(view: self.weatherLocationName, animationDuration: 0.25)
         // fade out image too so it looks more syncrounus
-        self.fadeViewOut(view: self.weatherIcon, animationDuration: 0.25)
-        self.fadeViewOut(view: self.lastUpdate, animationDuration: 0.25)
+        animationService.fadeViewOut(view: self.weatherIcon, animationDuration: 0.25)
+        animationService.fadeViewOut(view: self.lastUpdate, animationDuration: 0.25)
         
         // set values
         self.degrees.text = degrees
@@ -131,9 +133,9 @@ class MainViewController: SwipableTabViewController {
         self.weatherLocationName.text = location
         
         // fade in
-        self.fadeViewIn(view: self.degrees, animationDuration: 1.0)
-        self.fadeViewIn(view: self.conditions, animationDuration: 1.0)
-        self.fadeViewIn(view: self.weatherLocationName, animationDuration: 1.0)
+        animationService.fadeViewIn(view: self.degrees, animationDuration: 1.0)
+        animationService.fadeViewIn(view: self.conditions, animationDuration: 1.0)
+        animationService.fadeViewIn(view: self.weatherLocationName, animationDuration: 1.0)
     }
     
     func updateWeatherIconInView(data:Data) {
@@ -141,17 +143,18 @@ class MainViewController: SwipableTabViewController {
         self.weatherIcon.image = UIImage(data: data)
         
         // fade in
-        self.fadeViewIn(view: self.weatherIcon, animationDuration: 1.0)
+        animationService.fadeViewIn(view: self.weatherIcon, animationDuration: 1.0)
     }
     
     func updateDateInView(date:String) {
         self.lastUpdate.text = "Last Update: " + date
-        self.fadeViewIn(view: self.lastUpdate, animationDuration: 1.0)
+        animationService.fadeViewIn(view: self.lastUpdate, animationDuration: 1.0)
     }
     
     func loadCachedWeatherDataAndUpdateView() {
         do {
-            let weatherDataFromCache:ApiModel = try loadCachedWeatherData()
+            //let weatherDataFromCache:ApiModel = try loadCachedWeatherData()
+             let weatherDataFromCache:ApiModel = try weatherService.loadCachedWeatherDataFromLocation()
             self.updateWeatherDataInView(
                 degrees: String(weatherDataFromCache.main.temp.rounded()) + " °C",
                 conditions: weatherDataFromCache.weather[0].main,
@@ -160,13 +163,15 @@ class MainViewController: SwipableTabViewController {
             print("ERROR: \(e)")
         }
         do {
-            let image:Data = try getCachedData(key: CacheKeys.main.WEATHER_IMAGE.rawValue)
+            //let image:Data = try getCachedData(key: CacheKeys.main.WEATHER_IMAGE_LOCATION.rawValue)
+            //let image:Data = try cacheService.getCachedData(key: CacheKeys.main.WEATHER_IMAGE_LOCATION.rawValue)
+            let image:Data = try weatherService.loadCachedWeatherImgFromLocation()
             self.updateWeatherIconInView(data: image)
         } catch let e {
             print("ERROR: \(e)")
         }
         do {
-            let date:String = try getCachedString(key: CacheKeys.main.LAST_UPDATE.rawValue)
+            let date:String = try weatherService.loadCachedLastWeatherUpdateFromLocation()
             self.updateDateInView(date: date)
         } catch let e {
             print("ERROR: \(e)")
@@ -174,9 +179,11 @@ class MainViewController: SwipableTabViewController {
         
     }
     
+    
+    @available(*, deprecated, message: "use WeatherService instead")
     func loadCachedWeatherData() throws -> ApiModel {
         do {
-            let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA.rawValue)
+            let weather:Data = try getCachedData(key: CacheKeys.main.WEATHER_DATA_LOCATION.rawValue)
             let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
             return welcome
         } catch let e {
@@ -195,7 +202,7 @@ class MainViewController: SwipableTabViewController {
     func loadAsyncWeatherImage(code:String) {
         DispatchQueue.global().async {
             do {
-                let url = try URL(string: configsService.getApiImgBaseUrl() + code + ".png")
+                let url = URL(string: configsService.getApiImgBaseUrl() + code + ".png")
                 let data = try Data(contentsOf: url!)
                 if configsService.getDebug() {
                     print("DEBUG: Load Weather Image from Network: \(data)")
@@ -203,7 +210,7 @@ class MainViewController: SwipableTabViewController {
                 DispatchQueue.main.async() {
                     self.updateWeatherIconInView(data: data)
                 }
-                self.cacheData(key: CacheKeys.main.WEATHER_IMAGE.rawValue, data: data)
+                self.cacheData(key: CacheKeys.main.WEATHER_IMAGE_LOCATION.rawValue, data: data)
             } catch let e {
                 print("ERROR: \(e)")
                 return
@@ -211,39 +218,37 @@ class MainViewController: SwipableTabViewController {
         }
     }
 
-    func loadAsyncWeatherData(location:String) {
-        DispatchQueue.global().async {
-            do {
-                //let weatherData = try weatherService.loadWeatherDataFromSearch(search: location)
-                let weatherData = try weatherService.loadWeatherDataFromLocation()
-                DispatchQueue.main.async {
-                    self.updateWeatherDataInView(
-                        degrees: String(weatherData.main.temp.rounded()) + " °C",
-                        conditions: weatherData.weather[0].main,
-                        location: weatherData.name)
-                    self.updateDateInView(date: getTimestamp())
-                }
-                self.loadAsyncWeatherImage(code: weatherData.weather[0].icon)
-            } catch let e {
-                print("ERROR: \(e)")
-                return
+    //func loadAsyncWeatherData(location:String) {
+    func loadAsyncWeatherData() {
+        // Add async timeout if location is not loaded yet
+        if (nil == locationService.locationQuery) {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                self.loadWeatherDataAndUpdateView()
+            }
+        } else {
+            DispatchQueue.global().async {
+              self.loadWeatherDataAndUpdateView()
             }
         }
     }
     
-    func fadeViewIn(view : UIView, animationDuration: Double) {
-        // Fade in the view
-        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
-            view.alpha = 1
-        })
-    }
-    
-    func fadeViewOut(view : UIView, animationDuration: Double) {
-        // Fade out the view
-        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
-            view.alpha = 0
-        })
-        
+    func loadWeatherDataAndUpdateView() {
+        do {
+            //let weatherData = try weatherService.loadWeatherDataFromSearch(search: location)
+            let weatherData = try weatherService.loadWeatherDataFromLocation()
+            
+            DispatchQueue.main.async {
+                self.updateWeatherDataInView(
+                    degrees: String(weatherData.main.temp.rounded()) + " °C",
+                    conditions: weatherData.weather[0].main,
+                    location: weatherData.name)
+                self.updateDateInView(date: getTimestamp())
+            }
+            self.loadAsyncWeatherImage(code: weatherData.weather[0].icon)
+        } catch let e {
+            print("ERROR: \(e)")
+            return
+        }
     }
     
 }

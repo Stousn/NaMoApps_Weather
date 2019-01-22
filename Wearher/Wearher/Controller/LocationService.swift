@@ -28,7 +28,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
-        //getCurrentLocation()
         if nil != self.location {
             isInitializedLocation = true
         }
