@@ -53,6 +53,13 @@ class MainViewController: SwipableTabViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.backgroundColor = UIColor.clear
+        let backgroundLayer = colorService.gl
+        backgroundLayer.frame = view.frame
+        self.view.layer.insertSublayer(backgroundLayer, at: 0)
+    }
+    
     @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .recognized {
             locationService.getCurrentLocation()
