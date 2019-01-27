@@ -154,7 +154,7 @@
                                                 <rect key="frame" x="5" y="0.0" width="172.5" height="231"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.058155415100000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="YlJ-Wt-X81" firstAttribute="leading" secondItem="aCH-sZ-lH4" secondAttribute="leading" constant="5" id="BgU-WX-QVY"/>
                                             <constraint firstAttribute="bottom" secondItem="YlJ-Wt-X81" secondAttribute="bottom" id="UA3-De-PcL"/>
@@ -167,12 +167,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-FO-GMT">
                                                 <rect key="frame" x="5" y="5" width="167.5" height="221"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.14112419349999999" green="0.19668385190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="nNc-FO-GMT" secondAttribute="bottom" constant="5" id="E1N-8C-Uh2"/>
@@ -182,7 +184,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.02732834751" green="1" blue="0.0014138489790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PF5-lh-dGv" firstAttribute="top" secondItem="25d-9h-yPM" secondAttribute="top" id="3de-Pd-sIX"/>
                                     <constraint firstAttribute="bottom" secondItem="aCH-sZ-lH4" secondAttribute="bottom" id="6n8-ug-sv3"/>
@@ -213,6 +215,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-wU-Xnc">
+                                <rect key="frame" x="10" y="390.5" width="355" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -222,12 +230,15 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="UkD-lK-AoJ" secondAttribute="trailing" constant="10" id="An6-U9-aL8"/>
                             <constraint firstItem="meB-57-yCM" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="C2o-5U-btb"/>
                             <constraint firstItem="UkD-lK-AoJ" firstAttribute="top" secondItem="LIc-IX-qSW" secondAttribute="bottom" constant="10" id="Cmi-h3-eiL"/>
+                            <constraint firstAttribute="trailing" secondItem="IHL-wU-Xnc" secondAttribute="trailing" constant="10" id="DRh-Kq-VAs"/>
                             <constraint firstItem="UkD-lK-AoJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="10" id="IVL-ss-r3H"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="25d-9h-yPM" secondAttribute="trailing" constant="10" id="Uuj-E4-XNZ"/>
                             <constraint firstItem="LIc-IX-qSW" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="10" id="WN4-3r-GnA"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="LIc-IX-qSW" secondAttribute="trailing" constant="10" id="WUL-Wq-tY6"/>
                             <constraint firstItem="meB-57-yCM" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="Wqy-tG-wPk"/>
                             <constraint firstItem="meB-57-yCM" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="bLz-Dd-jxy"/>
+                            <constraint firstItem="IHL-wU-Xnc" firstAttribute="top" secondItem="UkD-lK-AoJ" secondAttribute="bottom" constant="10" id="cav-iK-lG7"/>
+                            <constraint firstItem="IHL-wU-Xnc" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="10" id="grD-qK-ZEr"/>
                             <constraint firstItem="LIc-IX-qSW" firstAttribute="top" secondItem="25d-9h-yPM" secondAttribute="bottom" constant="10" id="lkn-GO-xRm"/>
                             <constraint firstItem="25d-9h-yPM" firstAttribute="top" secondItem="meB-57-yCM" secondAttribute="bottom" constant="10" id="rUs-Vu-dwH"/>
                         </constraints>
@@ -241,6 +252,12 @@
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="conditions" destination="UkD-lK-AoJ" id="NY7-I6-ps2"/>
+                        <outlet property="degrees" destination="nNc-FO-GMT" id="tdZ-MK-H8N"/>
+                        <outlet property="lastUpdate" destination="IHL-wU-Xnc" id="JH3-zF-1Or"/>
+                        <outlet property="searchLocation" destination="meB-57-yCM" id="Nbg-L4-V6L"/>
+                        <outlet property="weatherIcon" destination="YlJ-Wt-X81" id="KzH-VT-KKc"/>
+                        <outlet property="weatherLocationName" destination="LIc-IX-qSW" id="1sE-fX-2WE"/>
                         <segue destination="9pv-A4-QxB" kind="presentation" identifier="swipeRightToMainView" id="9dd-Yz-DoD"/>
                     </connections>
                 </viewController>
@@ -256,7 +273,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-310" y="285"/>
+            <point key="canvasLocation" x="-311.19999999999999" y="284.70764617691157"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="92L-oZ-A36">
@@ -323,6 +340,10 @@
                         <viewLayoutGuide key="safeArea" id="cA9-0f-Ca5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icons8-xbox-menu-filled-25" id="Zl3-d9-jr7"/>
+                    <connections>
+                        <outlet property="adaptiveSizeSetting" destination="jtz-9z-gd6" id="s8m-yE-83n"/>
+                        <outlet property="locationSetting" destination="Y7F-aJ-7XD" id="X2y-Ye-VNE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCt-fz-fjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

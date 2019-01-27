@@ -13,7 +13,9 @@ let weatherService = WeatherService()
 
 class WeatherService {
     
-    private let WATHER_QUERY:String = "weather?q="
+    private let WATHER_SEARCH_QUERY:String = "weather?q="
+    
+     private let WATHER_LOCATION_QUERY:String = "weather?"
     
     private let apiQuerry:String?
     
@@ -21,33 +23,94 @@ class WeatherService {
         self.apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
     }
     
-    func loadWeatherDataFromLocation() {
-        // TODO: Implement
+    func loadWeatherDataFromLocation() throws -> ApiModel {
+        print(locationService)
+        guard nil != locationService.locationQuery  else {
+            throw WeatherError.apiCall(message: "Error during loadWeatherDataFromLocation: locationService.locationQuery was nil")
+        }
+        do {
+            let url:URL = try self.urlResolver(query: self.WATHER_LOCATION_QUERY + locationService.locationQuery!)
+            if configsService.getDebug() {
+                print("DEBUG: \(url)")
+            }
+            return try self.callWeatherApiAndCacheResult(url: url, cacheKey: CacheKeys.main.WEATHER_DATA_LOCATION.rawValue, cacheUpdateKey: CacheKeys.main.LAST_UPDATE_LOCATION.rawValue)
+            
+        } catch let e {
+            print("ERROR: \(e)")
+            throw WeatherError.apiCall(message: "Error during calling weather api: \(e)")
+        }
+        
     }
     
     func loadWeatherDataFromSearch(search:String) throws -> ApiModel {
         do {
-            let url:URL = try self.urlResolver(query: self.WATHER_QUERY + search)
+            let url:URL = try self.urlResolver(query: self.WATHER_SEARCH_QUERY + search)
             if configsService.getDebug() {
                 print("DEBUG: \(url)")
             }
-            return try self.callWeatherApiAndCacheResult(url: url, cacheKey: CacheKeys.main.WEATHER_DATA.rawValue, cacheUpdateKey: CacheKeys.main.LAST_UPDATE.rawValue)
+            return try self.callWeatherApiAndCacheResult(url: url, cacheKey: CacheKeys.main.WEATHER_DATA_SEARCH.rawValue, cacheUpdateKey: CacheKeys.main.LAST_UPDATE_SEARCH.rawValue)
         } catch let e {
             print("ERROR: \(e)")
             throw WeatherError.apiCall(message: "Error during calling weather api: \(e)")
         }
     }
     
-    func loadCachedWeatherDataFromLocation() {
-        // TODO: Implement
+    func loadCachedWeatherDataFromLocation() throws -> ApiModel {
+        do {
+            let weather:Data = try cacheService.getCachedData(key: CacheKeys.main.WEATHER_DATA_LOCATION.rawValue)
+            let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
+            return welcome
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
     }
     
-    func loadCachedWeatherDataFromSearch() {
-        // TODO: Implement
+    func loadCachedWeatherDataFromSearch() throws -> ApiModel {
+        do {
+            let weather:Data = try cacheService.getCachedData(key: CacheKeys.main.WEATHER_DATA_SEARCH.rawValue)
+            let welcome:ApiModel = try! JSONDecoder().decode(ApiModel.self, from: weather)
+            return welcome
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
     }
     
-    func loadCachedWeatherImg() {
-        // TODO: Implement
+    func loadCachedWeatherImgFromLocation() throws -> Data {
+        do {
+            return try cacheService.getCachedData(key: CacheKeys.main.WEATHER_IMAGE_LOCATION.rawValue)
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
+    }
+    
+    func loadCachedWeatherImgFromSearch() throws -> Data {
+        do {
+            return try cacheService.getCachedData(key: CacheKeys.main.WEATHER_IMAGE_SEARCH.rawValue)
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
+    }
+    
+    func loadCachedLastWeatherUpdateFromLocation() throws -> String {
+        do {
+            return try cacheService.getCachedString(key: CacheKeys.main.LAST_UPDATE_LOCATION.rawValue)
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
+    }
+    
+    func loadCachedLastWeatherUpdateFromSearch() throws -> String {
+        do {
+            return try cacheService.getCachedString(key: CacheKeys.main.LAST_UPDATE_SEARCH.rawValue)
+        } catch let e {
+            print("ERROR: \(e)")
+            throw e
+        }
     }
     
     private func callWeatherApiAndCacheResult(url:URL, cacheKey:String, cacheUpdateKey:String) throws -> ApiModel {

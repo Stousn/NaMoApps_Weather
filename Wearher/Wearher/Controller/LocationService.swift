@@ -18,19 +18,29 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     let LON:String = "&lon="
     
-    let locationManager:CLLocationManager = CLLocationManager()
+    var locationManager:CLLocationManager?
     
     var location:CLLocation?
     
     var isInitializedLocation:Bool = false
+    
+    var locationQuery:String?
+    
+    override init() {
+        super.init()
+        if nil != self.location {
+            isInitializedLocation = true
+        }
+    }
  
     func getCurrentLocation() {
-        self.locationManager.requestWhenInUseAuthorization()
+        locationManager = CLLocationManager()
+        self.locationManager!.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             print("IN LOCATION ENABLED")
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.requestLocation()
+            locationManager!.delegate = self
+            locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager!.requestLocation()
         }
     }
     
@@ -39,6 +49,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if nil != location {
             let locationCoordinates:CLLocationCoordinate2D = self.location!.coordinate
             print(LAT + String(locationCoordinates.latitude) + LON + String(locationCoordinates.longitude))
+            
+            locationQuery = LAT + String(locationCoordinates.latitude) + LON + String(locationCoordinates.longitude)
+            print("LOCATION QUERY: " + locationQuery!)
         }
         
     }
