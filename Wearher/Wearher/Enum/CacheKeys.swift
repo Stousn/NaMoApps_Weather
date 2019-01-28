@@ -18,6 +18,10 @@ enum CacheKeys {
         case WEATHER_DATA_SEARCH
         case WEATHER_IMAGE_SEARCH
         case LAST_UPDATE_SEARCH
+        enum settings:String {
+            case ADAPTIVE_SIZE_SWITCH
+            case DEFAULT_LOCATION
+        }
         
     }
 }
