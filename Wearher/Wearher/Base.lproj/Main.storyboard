@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="Wearher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,9 +85,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-b7-2Nm">
-                                <rect key="frame" x="325" y="447.5" width="40" height="30"/>
-                                <state key="normal" title="Share"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-b7-2Nm">
+                                <rect key="frame" x="343" y="447.5" width="22" height="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <state key="normal" image="share_transparent_kl"/>
                                 <connections>
                                     <action selector="shareWeather:" destination="9pv-A4-QxB" eventType="touchUpInside" id="5iu-94-UkO"/>
                                     <action selector="shareWeather:" destination="chW-hP-QB2" eventType="touchUpInside" id="qdu-3q-Iej"/>
@@ -127,12 +128,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <exit id="chW-hP-QB2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="538" y="285"/>
+            <point key="canvasLocation" x="536.79999999999995" y="284.70764617691157"/>
         </scene>
         <!--Search Location View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SearchLocationViewController" customModule="Wearher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="SearchLocationViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,7 +279,7 @@
         <!--Settings View Controller-->
         <scene sceneID="92L-oZ-A36">
             <objects>
-                <viewController id="QvI-ke-fLd" customClass="SettingsViewController" customModule="Wearher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QvI-ke-fLd" customClass="SettingsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lnB-Ms-XIR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,12 +311,19 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtz-9z-gd6">
                                 <rect key="frame" x="316" y="150" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="App Icon made by Freepik from www.flawticon.com is licensed by CC 3.0 BY" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV2-nu-fNg">
-                                <rect key="frame" x="10" y="211" width="355" height="89"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Icon made by Freepik from www.flawticon.com is licensed by CC 3.0 BY" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV2-nu-fNg">
+                                <rect key="frame" x="10" y="211" width="355" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XC-IG-NcM">
+                                <rect key="frame" x="10" y="251.5" width="84" height="30"/>
+                                <state key="normal" title="Clear Cache"/>
+                                <connections>
+                                    <action selector="clearCache:" destination="QvI-ke-fLd" eventType="touchUpInside" id="tuw-D2-cmY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -323,6 +331,7 @@
                             <constraint firstItem="cA9-0f-Ca5" firstAttribute="trailing" secondItem="jtz-9z-gd6" secondAttribute="trailing" constant="10" id="8Lq-uI-APw"/>
                             <constraint firstItem="EeV-Cr-MV1" firstAttribute="top" secondItem="cA9-0f-Ca5" secondAttribute="top" id="8X7-eP-a9j"/>
                             <constraint firstItem="Y7F-aJ-7XD" firstAttribute="leading" secondItem="cA9-0f-Ca5" secondAttribute="leading" constant="10" id="9ds-dT-WTj"/>
+                            <constraint firstItem="2XC-IG-NcM" firstAttribute="top" secondItem="FV2-nu-fNg" secondAttribute="bottom" constant="20" id="ETv-Uh-1Q4"/>
                             <constraint firstItem="cA9-0f-Ca5" firstAttribute="trailing" secondItem="edn-6V-Ajv" secondAttribute="trailing" constant="61" id="HCJ-f8-7Bs"/>
                             <constraint firstItem="mQP-JF-DWg" firstAttribute="top" secondItem="EeV-Cr-MV1" secondAttribute="bottom" constant="10" id="JHL-R9-I4U"/>
                             <constraint firstItem="EeV-Cr-MV1" firstAttribute="leading" secondItem="lnB-Ms-XIR" secondAttribute="leading" id="Jxs-4s-lCC"/>
@@ -335,6 +344,7 @@
                             <constraint firstItem="FV2-nu-fNg" firstAttribute="top" secondItem="jtz-9z-gd6" secondAttribute="bottom" constant="30" id="mMD-Kr-qix"/>
                             <constraint firstItem="EeV-Cr-MV1" firstAttribute="centerX" secondItem="mQP-JF-DWg" secondAttribute="centerX" id="mYS-ay-fpK"/>
                             <constraint firstItem="Y7F-aJ-7XD" firstAttribute="top" secondItem="mQP-JF-DWg" secondAttribute="bottom" constant="5" id="pX8-wk-RbU"/>
+                            <constraint firstItem="2XC-IG-NcM" firstAttribute="leading" secondItem="cA9-0f-Ca5" secondAttribute="leading" constant="10" id="pyf-8w-Faf"/>
                             <constraint firstItem="cA9-0f-Ca5" firstAttribute="trailing" secondItem="mQP-JF-DWg" secondAttribute="trailing" constant="10" id="rto-LZ-R8e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cA9-0f-Ca5"/>
@@ -352,7 +362,7 @@
         <!--Tab Bar Controller With Swipe-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="UITabBarControllerWithSwipe" customModule="Wearher" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="UITabBarControllerWithSwipe" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -375,6 +385,7 @@
         <image name="icons8-near-me-filled-25" width="18.75" height="18.75"/>
         <image name="icons8-xbox-menu-filled-25" width="18.75" height="18.75"/>
         <image name="second" width="30" height="30"/>
+        <image name="share_transparent_kl" width="22" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9dd-Yz-DoD"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F817B79421C540E100843168 /* SwipableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F817B79321C540E100843168 /* SwipableTabViewController.swift */; };
+		F833A96821FF86A6002F2F2F /* Weather.app in Resources */ = {isa = PBXBuildFile; fileRef = F8D6F93B219306630014BA7B /* Weather.app */; };
 		F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2D2196C7140022608F /* ApiModel.swift */; };
 		F83ACA302196C7660022608F /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2F2196C7660022608F /* Clouds.swift */; };
 		F83ACA322196C7890022608F /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA312196C7890022608F /* Coord.swift */; };
@@ -58,7 +59,7 @@
 		F8597DD121F7A1E90053F25D /* AnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationService.swift; sourceTree = "<group>"; };
 		F873564421A884DF00ED7AC4 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		F888DD1F21A991E5004A13DF /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
-		F8D6F93B219306630014BA7B /* Wearher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wearher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8D6F93B219306630014BA7B /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D6F93E219306630014BA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8D6F940219306630014BA7B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F8D6F942219306630014BA7B /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +155,7 @@
 		F8D6F93C219306630014BA7B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8D6F93B219306630014BA7B /* Wearher.app */,
+				F8D6F93B219306630014BA7B /* Weather.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,9 +182,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F8D6F93A219306630014BA7B /* Wearher */ = {
+		F8D6F93A219306630014BA7B /* Weather */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F8D6F94F219306640014BA7B /* Build configuration list for PBXNativeTarget "Wearher" */;
+			buildConfigurationList = F8D6F94F219306640014BA7B /* Build configuration list for PBXNativeTarget "Weather" */;
 			buildPhases = (
 				F8D6F937219306630014BA7B /* Sources */,
 				F8D6F938219306630014BA7B /* Frameworks */,
@@ -193,9 +194,9 @@
 			);
 			dependencies = (
 			);
-			name = Wearher;
+			name = Weather;
 			productName = Wearher;
-			productReference = F8D6F93B219306630014BA7B /* Wearher.app */;
+			productReference = F8D6F93B219306630014BA7B /* Weather.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +214,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F8D6F936219306620014BA7B /* Build configuration list for PBXProject "Wearher" */;
+			buildConfigurationList = F8D6F936219306620014BA7B /* Build configuration list for PBXProject "Weather" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -226,7 +227,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F8D6F93A219306630014BA7B /* Wearher */,
+				F8D6F93A219306630014BA7B /* Weather */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +240,7 @@
 				F83ACA452196CD4B0022608F /* Config.plist in Resources */,
 				F8D6F94B219306640014BA7B /* LaunchScreen.storyboard in Resources */,
 				F8D6F948219306640014BA7B /* Assets.xcassets in Resources */,
+				F833A96821FF86A6002F2F2F /* Weather.app in Resources */,
 				F8D6F946219306630014BA7B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +455,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F8D6F936219306620014BA7B /* Build configuration list for PBXProject "Wearher" */ = {
+		F8D6F936219306620014BA7B /* Build configuration list for PBXProject "Weather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F8D6F94D219306640014BA7B /* Debug */,
@@ -462,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F8D6F94F219306640014BA7B /* Build configuration list for PBXNativeTarget "Wearher" */ = {
+		F8D6F94F219306640014BA7B /* Build configuration list for PBXNativeTarget "Weather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F8D6F950219306640014BA7B /* Debug */,

@@ -30,6 +30,10 @@ class CacheService {
         SHARED_PREFS.setValue(str, forKey: key)
     }
     
+    func cacheBool(key:String, bool:Bool) {
+        SHARED_PREFS.setValue(bool, forKey: key)
+    }
+    
     func getCachedData(key:String) throws -> Data {
         if let data = SHARED_PREFS.data(forKey: key) {
             if configsService.getDebug() {
@@ -46,6 +50,17 @@ class CacheService {
             return str
         } else {
             throw WeatherError.emptyCache(message: "Error loading value for key \(key) from cache")
+        }
+    }
+    
+    func getCachedBool(key:String) -> Bool {
+        return SHARED_PREFS.bool(forKey: key)
+    }
+    
+    func clearCache() {
+        let dictionary = SHARED_PREFS.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            SHARED_PREFS.removeObject(forKey: key)
         }
     }
 }

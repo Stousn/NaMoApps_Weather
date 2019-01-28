@@ -51,6 +51,7 @@ class SearchLocationViewController: SwipableTabViewController, UISearchBarDelega
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
         
+        loadCachedLocation()
         loadAsyncWeatherData(location: self.location)
         
     }
@@ -179,6 +180,17 @@ class SearchLocationViewController: SwipableTabViewController, UISearchBarDelega
             print("DEBUG: Chaching data for \(key): \(data)")
         }
         SHARED_PREFS.setValue(data, forKey: key)
+    }
+    
+    func loadCachedLocation() {
+        do {
+            let cachedLocation = try cacheService.getCachedString(key: CacheKeys.main.settings.DEFAULT_LOCATION.rawValue)
+            if "" != cachedLocation {
+                self.location = cachedLocation
+            }
+        } catch let e {
+            print("ERROR: \(e)")
+        }
     }
     
     func updateWeatherDataInView(degrees: String, conditions:String, location:String) {

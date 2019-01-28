@@ -229,7 +229,7 @@ class MainViewController: SwipableTabViewController {
     func loadAsyncWeatherData() {
         // Add async timeout if location is not loaded yet
         if (nil == locationService.locationQuery) {
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
                 self.loadWeatherDataAndUpdateView()
             }
         } else {
