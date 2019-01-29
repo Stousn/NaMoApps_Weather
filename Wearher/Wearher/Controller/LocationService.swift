@@ -12,6 +12,7 @@ import CoreLocation
 /** Singelton of class `CacheService`*/
 let locationService = LocationService()
 
+/** Loads GPS location and provides `locationQuery:String?` for API call */
 class LocationService: NSObject, CLLocationManagerDelegate {
     
     let LAT:String = "lat="
@@ -24,6 +25,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     var isInitializedLocation:Bool = false
     
+    /** Location query for API call */
     var locationQuery:String?
     
     override init() {
@@ -33,6 +35,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
  
+    /** sets current location in class variable location */
     func getCurrentLocation() {
         locationManager = CLLocationManager()
         self.locationManager!.requestWhenInUseAuthorization()
@@ -44,6 +47,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    /** locationManager success callback sets locationQuery */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations.first
         if nil != location {
@@ -56,6 +60,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         
     }
     
+    /** locationManager error callback */
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }

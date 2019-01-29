@@ -8,8 +8,13 @@
 
 import Foundation
 
+/** API configuration */
 enum ApiConfig {
+
+    /** API URL configuration */
     enum url {
+
+        /** API Url */
         enum API_URL {
             return ""
         }

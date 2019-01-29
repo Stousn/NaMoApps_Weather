@@ -12,5 +12,7 @@ extension String: Error {}
 
 /** Errors from Weather App*/
 enum LocationError: Error {
+
+    /** ERROR: Location could not be retrieved  */
     case getLocationFailed(message:String)
 }
