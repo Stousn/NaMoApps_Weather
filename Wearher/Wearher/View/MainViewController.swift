@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreMotion
 
 class MainViewController: SwipableTabViewController {
     
@@ -27,6 +28,8 @@ class MainViewController: SwipableTabViewController {
     @IBOutlet weak var weatherIcon: UIImageView!
     
     @IBOutlet weak var lastUpdate: UILabel!
+    
+    var previousAccl:Any?
     
     // @IBOutlet var screenEdgePanGestureDown: UIScreenEdgePanGestureRecognizer!
     
@@ -51,6 +54,13 @@ class MainViewController: SwipableTabViewController {
         
         loadAsyncWeatherData()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(increaseSize(_:)), name: Notification.Name(rawValue: "increaseSize"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(decreaseSize(_:)), name: Notification.Name(rawValue: "decreaseSize"), object: nil)
+        
+        if cacheService.getCachedBool(key: CacheKeys.main.settings.ADAPTIVE_SIZE_SWITCH.rawValue) {
+            motionService.coreMotion()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +68,14 @@ class MainViewController: SwipableTabViewController {
         let backgroundLayer = colorService.gl
         backgroundLayer.frame = view.frame
         self.view.layer.insertSublayer(backgroundLayer, at: 0)
+        
+        if cacheService.getCachedBool(key: CacheKeys.main.settings.ADAPTIVE_SIZE_SWITCH.rawValue) {
+            motionService.coreMotion()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        motionService.motionManager.stopDeviceMotionUpdates()
     }
     
     @objc func screenSwipedDown(_ recognizer: UISwipeGestureRecognizer) {
@@ -255,6 +273,32 @@ class MainViewController: SwipableTabViewController {
         } catch let e {
             print("ERROR: \(e)")
             return
+        }
+    }
+    
+    override func decreaseSize(_ sender: Any?) {
+        if self.degrees.font.pointSize > 20.0 {
+            self.degrees.font = UIFont(name: self.degrees.font.fontName, size: self.degrees.font.pointSize-5)
+            //print("DECREASE \(self.degrees.font.pointSize)")
+        }
+        if self.conditions.font.pointSize > 20.0 {
+            self.conditions.font = UIFont(name: self.conditions.font.fontName, size: self.conditions.font.pointSize-5)
+        }
+        if self.weatherLocationName.font.pointSize > 20.0 {
+            self.weatherLocationName.font = UIFont(name: self.weatherLocationName.font.fontName, size: self.weatherLocationName.font.pointSize-3)
+        }
+    }
+    
+    override func increaseSize(_ sender: Any?) {
+        if self.degrees.font.pointSize < 60.0 {
+            self.degrees.font = UIFont(name: self.degrees.font.fontName, size: self.degrees.font.pointSize+5)
+            //print("INCREASE \(self.degrees.font.pointSize)")
+        }
+        if self.conditions.font.pointSize < 60.0 {
+            self.conditions.font = UIFont(name: self.conditions.font.fontName, size: self.conditions.font.pointSize+5)
+        }
+        if self.weatherLocationName.font.pointSize < 60.0 {
+            self.weatherLocationName.font = UIFont(name: self.weatherLocationName.font.fontName, size: self.weatherLocationName.font.pointSize+3)
         }
     }
     
