@@ -11,6 +11,7 @@ import Foundation
 /** Singelton of class `WeatherService`*/
 let weatherService = WeatherService()
 
+/** provides weather data and queries API */
 class WeatherService {
     
     private let WATHER_SEARCH_QUERY:String = "weather?q="
@@ -23,6 +24,7 @@ class WeatherService {
         self.apiQuerry = "&APPID=" + configsService.getApiKey() + "&units=metric"
     }
     
+    /** returns location based weather data */
     func loadWeatherDataFromLocation() throws -> ApiModel {
         print(locationService)
         guard nil != locationService.locationQuery  else {
@@ -42,6 +44,7 @@ class WeatherService {
         
     }
     
+    /** returns text search based weather data */
     func loadWeatherDataFromSearch(search:String) throws -> ApiModel {
         do {
             let url:URL = try self.urlResolver(query: self.WATHER_SEARCH_QUERY + search)
@@ -55,6 +58,7 @@ class WeatherService {
         }
     }
     
+    /** loads location based weather data stored by CacheService */
     func loadCachedWeatherDataFromLocation() throws -> ApiModel {
         do {
             let weather:Data = try cacheService.getCachedData(key: CacheKeys.main.WEATHER_DATA_LOCATION.rawValue)
@@ -66,6 +70,7 @@ class WeatherService {
         }
     }
     
+    /** loads search based weather data stored by CacheService */
     func loadCachedWeatherDataFromSearch() throws -> ApiModel {
         do {
             let weather:Data = try cacheService.getCachedData(key: CacheKeys.main.WEATHER_DATA_SEARCH.rawValue)
@@ -77,6 +82,7 @@ class WeatherService {
         }
     }
     
+    /** loads location based weather image stored by CacheService */
     func loadCachedWeatherImgFromLocation() throws -> Data {
         do {
             return try cacheService.getCachedData(key: CacheKeys.main.WEATHER_IMAGE_LOCATION.rawValue)
@@ -86,6 +92,7 @@ class WeatherService {
         }
     }
     
+    /** loads search based weather image stored by CacheService */
     func loadCachedWeatherImgFromSearch() throws -> Data {
         do {
             return try cacheService.getCachedData(key: CacheKeys.main.WEATHER_IMAGE_SEARCH.rawValue)
@@ -95,6 +102,7 @@ class WeatherService {
         }
     }
     
+    /** loads location based timestamp of last weather data change stored by CacheService */
     func loadCachedLastWeatherUpdateFromLocation() throws -> String {
         do {
             return try cacheService.getCachedString(key: CacheKeys.main.LAST_UPDATE_LOCATION.rawValue)
@@ -104,6 +112,7 @@ class WeatherService {
         }
     }
     
+    /** loads search based timestamp of last weather data change stored by CacheService */
     func loadCachedLastWeatherUpdateFromSearch() throws -> String {
         do {
             return try cacheService.getCachedString(key: CacheKeys.main.LAST_UPDATE_SEARCH.rawValue)
@@ -113,6 +122,7 @@ class WeatherService {
         }
     }
     
+    /** queries weather API and persists result with CacheService */
     private func callWeatherApiAndCacheResult(url:URL, cacheKey:String, cacheUpdateKey:String) throws -> ApiModel {
         let data = try Data(contentsOf: url)
         if configsService.getDebug() {
@@ -126,6 +136,7 @@ class WeatherService {
         return response
     }
     
+    /** resolves API url */
     private func urlResolver (query:String) throws -> URL {
         if apiQuerry == nil {
             throw WeatherError.urlResolver(message: "apiQuerry was nil")
