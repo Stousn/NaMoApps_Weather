@@ -1,6 +1,6 @@
 //
 //  LocationService.swift
-//  Wearher
+//  Weather
 //
 //  Created by Stefan Reip on 10.11.18.
 //  Copyright © 2018 Stefan Reip. All rights reserved.
@@ -40,7 +40,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         self.locationManager!.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            print("IN LOCATION ENABLED")
+            if configsService.getDebug() {
+                print("IN LOCATION ENABLED")
+            }
             locationManager!.delegate = self
             locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager!.requestLocation()
@@ -55,14 +57,16 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             print(LAT + String(locationCoordinates.latitude) + LON + String(locationCoordinates.longitude))
             
             locationQuery = LAT + String(locationCoordinates.latitude) + LON + String(locationCoordinates.longitude)
-            print("LOCATION QUERY: " + locationQuery!)
+             if configsService.getDebug() {
+                print("DEBUG: LOCATION QUERY: " + locationQuery!)
+            }
         }
         
     }
     
     /** locationManager error callback */
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)")
+        print("ERROR: Failed to find user's location: \(error.localizedDescription)")
     }
 }
 

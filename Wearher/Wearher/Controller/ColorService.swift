@@ -1,6 +1,6 @@
 //
 //  ColorService.swift
-//  Wearher
+//  Weather
 //
 //  Created by Stefan Reip on 24.11.18.
 //  Copyright © 2018 Stefan Reip. All rights reserved.
@@ -14,8 +14,6 @@ let colorService = ColorService()
 
 /** Color calculation and time specific color gradients */
 class ColorService {
-    //let colorTop = UIColor(red: 192.0/255.0, green: 38.0/255.0, blue: 42.0/255.0, alpha: 1.0)
-    //let colorBottom = UIColor(red: 35.0/255.0, green: 2.0/255.0, blue: 2.0/255.0, alpha: 1.0)
     
     let gl: CAGradientLayer
     

@@ -1,6 +1,6 @@
 //
 //  WeatherController.swift
-//  Wearher
+//  Weather
 //
 //  Created by Stefan Reip on 10.11.18.
 //  Copyright © 2018 Stefan Reip. All rights reserved.
@@ -16,7 +16,7 @@ class WeatherService {
     
     private let WATHER_SEARCH_QUERY:String = "weather?q="
     
-     private let WATHER_LOCATION_QUERY:String = "weather?"
+    private let WATHER_LOCATION_QUERY:String = "weather?"
     
     private let apiQuerry:String?
     
