@@ -30,7 +30,7 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
     <td><ul><li>[X] Weather API integrated</ul></li></td>
   </tr>
   <tr>
-    <td><ul><li>[ ] Adaptive UI</ul></li></td>
+    <td><ul><li>[X] Adaptive UI</ul></li></td>
   </tr>
     <tr>
     <td rowspan="3">Can:</td>
