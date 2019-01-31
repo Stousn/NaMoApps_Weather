@@ -9,8 +9,10 @@
 import Foundation
 import CoreMotion
 
+/** Singelton of class `MotionService`*/
 let motionService = MotionService()
 
+/** Motion detection and speeeeeeed calculation */
 class MotionService {
     
     let motionManager:CMMotionManager
@@ -19,19 +21,22 @@ class MotionService {
     
     var speed: Double = 0.0
     
-    init () {
+    init() {
         motionManager = CMMotionManager()
         
     }
     
-    func coreMotion() { // CALLING FROM VIEW DID LOAD
+    /** Checks for motion availability and and starts listening to motion updates every 0.1 secs.
+     * Important: Call form `viewDidLoad()`!
+     */
+    func coreMotion() {
         if self.motionManager.isDeviceMotionAvailable {
             self.motionManager.deviceMotionUpdateInterval = 0.1
             self.motionManager.startDeviceMotionUpdates(
                 to: OperationQueue.current!, withHandler: {
                     [weak self] (deviceMotion, error) -> Void in
                     if let error = error {
-                        print("ERROR : \(error.localizedDescription)")
+                        print("ERROR: \(error.localizedDescription)")
                     }
                     
                     if let deviceMotion = deviceMotion {
@@ -39,29 +44,36 @@ class MotionService {
                     }
             })
         } else {
+            print("ERROR: Device Motion is not available!")
             print("WHAT THE HELL")
         }
     }
     
+    /** callback for device motion updates. Calculates speeeed of motion
+     * notifies if the size should be increased or decreased
+     */
     func handleDeviceMotionUpdate(_ deviceMotion: CMDeviceMotion) {
         let acceleration = deviceMotion.userAcceleration.z
         //let gravity = deviceMotion.gravity.z
         let attitude = deviceMotion.attitude
+        let pitch = self.degrees(attitude.pitch)
         
+        if configsService.getDebug() {
+            let accl = deviceMotion.userAcceleration
+            print("DEBUG: Roll: \(attitude.roll), Pitch: \(pitch), Yaw: \(attitude.yaw)")
+            print("DEBUG: ACCELRATION: \(accl.x) \(accl.y) \(accl.z)")
+            self.calculateSpeed(accl: accl)
+            print("DEBUG: SPEED: \(speed)")
+        }
+      
         
-//        let roll = self.degrees(attitude.roll)
-            let pitch = self.degrees(attitude.pitch)
-//        let yaw = self.degrees(attitude.yaw)
-//        attitude.x
-//        let accl = deviceMotion.userAcceleration
-//        self.calculateSpeed(accl: accl)
-//        self.previousAccl = accl
-        //print("Roll: \(roll), Pitch: \(pitch), Yaw: \(yaw)")
-        //print("ACCELRATION: \(accl.x) \(accl.y) \(accl.z)")
-       // print("SPEED: \(acceleration)")
-        
+        // Awesome calculation of motion direction and speed
+        // flux generator logic
         if (acceleration > 0.15 || acceleration < -0.15 ) {
-//            print("PITCH \(pitch)")
+            if configsService.getDebug() {
+                print("DEBUG: PITCH \(pitch)")
+            }
+
             if pitch > 50.0 {
                 print("UP")
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "increaseSize"), object: nil)
@@ -74,10 +86,12 @@ class MotionService {
         }
     }
     
+    /** Calc deg from rad */
     func degrees(_ radians: Double) -> Double {
         return 180 / Double.pi * radians
     }
     
+    /** speedometer. accl average speed in z direction (only positive) */
     func calculateSpeed(accl: CMAcceleration) {
         self.speed = speed + accl.z * 0.1
         if self.speed < 0 {
