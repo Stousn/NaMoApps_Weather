@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F817B79421C540E100843168 /* SwipableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F817B79321C540E100843168 /* SwipableTabViewController.swift */; };
-		F833A96821FF86A6002F2F2F /* Weather.app in Resources */ = {isa = PBXBuildFile; fileRef = F8D6F93B219306630014BA7B /* Weather.app */; };
+		F833A96A21FF8957002F2F2F /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F833A96921FF8957002F2F2F /* MotionService.swift */; };
 		F83ACA2E2196C7140022608F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2D2196C7140022608F /* ApiModel.swift */; };
 		F83ACA302196C7660022608F /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA2F2196C7660022608F /* Clouds.swift */; };
 		F83ACA322196C7890022608F /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83ACA312196C7890022608F /* Coord.swift */; };
@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		F817B79321C540E100843168 /* SwipableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableTabViewController.swift; sourceTree = "<group>"; };
+		F833A96921FF8957002F2F2F /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		F83ACA2D2196C7140022608F /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		F83ACA2F2196C7660022608F /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		F83ACA312196C7890022608F /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 				F83ACA532196E66D0022608F /* LocationService.swift */,
 				F83ACA552196EF6B0022608F /* WeatherServiceHelper.swift */,
 				F888DD1F21A991E5004A13DF /* ColorService.swift */,
+				F833A96921FF8957002F2F2F /* MotionService.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,7 +242,6 @@
 				F83ACA452196CD4B0022608F /* Config.plist in Resources */,
 				F8D6F94B219306640014BA7B /* LaunchScreen.storyboard in Resources */,
 				F8D6F948219306640014BA7B /* Assets.xcassets in Resources */,
-				F833A96821FF86A6002F2F2F /* Weather.app in Resources */,
 				F8D6F946219306630014BA7B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +258,7 @@
 				F8D6F943219306630014BA7B /* SearchLocationViewController.swift in Sources */,
 				F8597DD221F7A1E90053F25D /* AnimationService.swift in Sources */,
 				F83ACA4A2196D4F20022608F /* ConfigKeys.swift in Sources */,
+				F833A96A21FF8957002F2F2F /* MotionService.swift in Sources */,
 				F83ACA482196CF390022608F /* ConfigService.swift in Sources */,
 				F8D6F93F219306630014BA7B /* AppDelegate.swift in Sources */,
 				F888DD2021A991E5004A13DF /* ColorService.swift in Sources */,
