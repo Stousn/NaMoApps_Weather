@@ -45,7 +45,7 @@ class MotionService {
     
     func handleDeviceMotionUpdate(_ deviceMotion: CMDeviceMotion) {
         let acceleration = deviceMotion.userAcceleration.z
-        let gravity = deviceMotion.gravity.z
+        //let gravity = deviceMotion.gravity.z
         let attitude = deviceMotion.attitude
         
         
