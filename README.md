@@ -24,23 +24,23 @@ Project for Native Mobile Apps @ FH JOANNEUM - IT&amp;Mobile Security Master
 <table>
   <tr>
     <td rowspan="3">Must:</td>
-    <td>Weather-App based on GPS location & search</td>
+    <td><ul><li>[X] Weather-App based on GPS location & search</ul></li></td>
   </tr>
   <tr>
-    <td>Weather API integrated</td>
+    <td><ul><li>[X] Weather API integrated</ul></li></td>
   </tr>
   <tr>
-    <td>Adaptive UI</td>
+    <td><ul><li>[ ] Adaptive UI</ul></li></td>
   </tr>
     <tr>
     <td rowspan="3">Can:</td>
-    <td>Watch App (zoomable via Digital Crown)</td>
+    <td><ul><li>[ ] Watch App (zoomable via Digital Crown)</ul></li></td>
   </tr>
   <tr>
-    <td>Conform to A11Y-rulsets</td>
+    <td><ul><li>[ ] Conform to A11Y-rulsets</ul></li></td>
   </tr>
   <tr>
-    <td>Notifications</td>
+    <td><ul><li>[ ] Notifications</ul></li></td>
   </tr>
 </table>
 
